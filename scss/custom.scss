@@ -13,8 +13,6 @@
 }
 
 body {
-    display: flex;
-    flex-direction: column;
     margin: 0;
 }
 
@@ -64,29 +62,30 @@ body {
     text-decoration: none;
 }
 
-.welcome, .space, .more-info, .quotes, .call-to-action {
+.welcome, .quotes, .call-to-action {
+    height: 400px;
+}
+
+.space {
     height: 400px;
 }
 
 .welcome {
-    background-color: var(--dark-tan);
+    background-color: var(--light-brown);
     color: black;
 }
 
 .space {
-    background-color: black;
-    color: white;
-}
-
-.quotes {
-    background-color: var(--dark-tan);
-    color: black;
-}
-
-.footer {
     display: flex;
-    justify-content: center;
+    background: radial-gradient(ellipse at bottom, #162b43 0%, #000000 100%);
+}
+
+.space img {
+    display: flex;
     align-items: center;
+    justify-items: center;
+    height: 300px;
+    width: auto;
 }
 
 // SPACE BACKGROUND
@@ -100,7 +99,7 @@ body {
     @return unquote($value);
 } 
   
-$shadows-small:  multiple-box-shadow(1000);
+$shadows-small:  multiple-box-shadow(2000);
 $shadows-medium: multiple-box-shadow(500);
 $shadows-big:    multiple-box-shadow(150);
     
@@ -112,7 +111,7 @@ $shadows-big:    multiple-box-shadow(150);
     animation: animStar 150s linear infinite;
 }
 
-starsSm::after {
+#starsSm::after {
     content: " ";
     position: absolute;
     top: 2000px;
@@ -162,10 +161,77 @@ content: " ";
     
 @keyframes animStar {
     from {
-        transform: translateX(0px);
+        transform: translateX(-1000px);
     }
         
     to {
-        transform: translateX(-2000px);
+        transform: translateX(-3000px);
     }		
+}
+
+// ROCKET THRUST
+
+$fireColor: rgb(255,80,0);
+$fireColorT: rgba(255,80,0,0);
+$dur: 0.25s;
+$blur: 0.02em;
+$fireRad: 3em;
+$parts: 50;
+$partSize: 5em;
+
+.fire {
+	font-size: 24px;
+	filter: blur($blur);
+	-webkit-filter: blur($blur) contrast(10);
+	margin: 3em auto 0 auto;
+	position: relative;
+	width: 10em;
+	height: 12em;
+}
+.particle {
+	animation: thrust $dur ease-in infinite;
+	background-image: radial-gradient($fireColor 20%,$fireColorT 70%);
+	border-radius: 50%;
+	mix-blend-mode: screen;
+	opacity: 0;
+	position: absolute;
+	bottom: 0;
+	width: $partSize;
+	height: $partSize;
+	// spread particles out in time and x-position to get desired effect
+	@for $p from 1 through $parts {
+		&:nth-of-type(#{$p}) {
+			animation-delay: $dur * random();
+			left: calc((100% - #{$partSize}) * #{($p - 1)/$parts});
+		}
+	}
+}
+@keyframes thrust {
+	from {
+		opacity: 0;
+		transform: translateX(0) scale(1);
+	}
+	50% {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+		transform: translateX(-10em) scale(0);
+	}
+}
+
+.quotes {
+    background-color: var(--light-tan);
+    color: black;
+}
+
+.call-to-action {
+    background-color: var(--dark-tan);
+    color: black;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
