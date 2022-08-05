@@ -81,6 +81,8 @@ body {
 // SPACE SECTION
 
 $spaceHeight: 400px;  // Height of Space Section
+
+
 $astronarHeight: 300px;  // Height of rocket image
 
 
@@ -204,17 +206,19 @@ $blur: 0.02em;
 $contrast: 5;
 $fireRad: 3em;
 $parts: 50;
-$partSize: 100px; // Vertical size of thruster
-$width: 200px; // Horizontal size of thruster
+$partSize: $astronarHeight/3; // Vertical size of thruster
+$width: $astronarHeight /3 *2; // Horizontal size of thruster
 
 
 .thruster {
     position: relative;
-    left: 50%;
+    width: $astronarHeight;
+    margin: 0 auto;
+    // left: 50%;
 }
 .fire {
     position: relative;
-    left: -$astronarHeight;
+    left: -$astronarHeight / 2;
     z-index: 2;
 	font-size: 24px;
 	-webkit-filter: blur($blur) contrast($contrast);
