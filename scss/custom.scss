@@ -78,13 +78,9 @@ body {
     width: auto;
 }
 
-// SPACE SECTION
+// SPACE BACKGROUND
 
 $spaceHeight: 400px;  // Height of Space Section
-
-
-$astronarHeight: 300px;  // Height of rocket image
-
 
 .space {  // Container for entire space section
     height: $spaceHeight;
@@ -120,7 +116,6 @@ $shadows-big:    multiple-box-shadow(150);
     box-shadow: $shadows-small;
     animation: animStar 150s linear infinite;
 }
-
 #starsSm::after {
     content: " ";
     position: absolute;
@@ -130,8 +125,7 @@ $shadows-big:    multiple-box-shadow(150);
     background: transparent;
     box-shadow: $shadows-small;
 }
-    
-    
+
 #starsMd {
     width: 2px;
     height: 2px;
@@ -139,7 +133,6 @@ $shadows-big:    multiple-box-shadow(150);
     box-shadow: $shadows-medium;
     animation: animStar 100s linear infinite;
 }
-
 #starsMd::after {
     content: " ";
     position: absolute;
@@ -157,7 +150,6 @@ $shadows-big:    multiple-box-shadow(150);
     box-shadow: $shadows-big;
     animation: animStar 50s linear infinite;
 }
-
 #starsLg::after {
     content: " ";
     position: absolute;
@@ -179,85 +171,101 @@ $shadows-big:    multiple-box-shadow(150);
     }		
 }
 
-// Starship
+// STARSHIP COMPONENTS
 
-.starship {
-    height: 100%;
-    width: 100%;
-    margin-top: -$spaceHeight;
-    text-align: center;
-    // overflow: hidden;
+// Called with different screen sizes to determine the size of the ship
+@mixin starship-size($astronarHeight) {
+    // Starship
+    .starship {
+        height: 100%;
+        width: 100%;
+        margin-top: -$spaceHeight;
+        text-align: center;
+        // overflow: hidden;
+    }
+    .astronar {
+        height: $astronarHeight;
+        width: auto;
+        position: relative;
+        z-index: 3;
+        margin-top: ($spaceHeight - $astronarHeight) / 2;
+    }
+
+    // Starship Thruster
+    $fireColor: rgb(255,80,0);
+    $fireColorT: rgba(255,80,0,0);
+    $dur: 0.25s;
+    $blur: 0.02em;
+    $contrast: 5;
+    $fireRad: 3em;
+    $parts: 50;
+    $partSize: $astronarHeight/3; // Vertical size of thruster
+    $width: $astronarHeight /3 *2; // Horizontal size of thruster
+    .thruster {
+        position: relative;
+        width: $astronarHeight;
+        margin: 0 auto;
+        // left: 50%;
+    }
+    .fire {
+        position: relative;
+        left: -$astronarHeight / 2;
+        z-index: 2;
+        font-size: 24px;
+        -webkit-filter: blur($blur) contrast($contrast);
+        width: $width;
+        height: $partSize;
+        margin-top: -($astronarHeight + $partSize) / 2;
+    }
+    .particle {
+        animation: thrust $dur ease-in infinite;
+        background-image: radial-gradient($fireColor 20%,$fireColorT 70%);
+        border-radius: 50%;
+        mix-blend-mode: screen;
+        opacity: 0;
+        position: absolute;
+        bottom: 0;
+        width: $partSize;
+        height: $partSize;
+        // spread particles out in time and x-position to get desired effect
+        @for $p from 1 through $parts {
+            &:nth-of-type(#{$p}) {
+                animation-delay: $dur * random();
+                left: calc((100% - #{$partSize}) * #{($p - 1)/$parts});
+            }
+        }
+    }
+    @keyframes thrust {
+        from {
+            opacity: 0;
+            transform: translateX(0) scale(1);
+        }
+        50% {
+            opacity: 1;
+            transform: translateX(-50%) scale(.4);
+        }
+        to {
+            opacity: 0;
+            transform: translateX(-100%) scale(0);
+        }
+    }
 }
 
-.astronar {
-    height: $astronarHeight;
-    width: auto;
-    position: relative;
-    z-index: 3;
-    margin-top: ($spaceHeight - $astronarHeight) / 2;
+// Astronar size variables for different screen sizes
+$largeSize: 300px;
+$mediumSize: 150px;
+$smallSize: 75px;
+
+@media screen and (max-width: 360px) {
+    @include starship-size($smallSize);
+}
+@media screen and (min-width: 361px) and (max-width: 720px) {
+    @include starship-size($mediumSize);
+}
+@media screen and (min-width: 721px) {
+    @include starship-size($largeSize);
 }
 
-// Starship Thruster
-
-$fireColor: rgb(255,80,0);
-$fireColorT: rgba(255,80,0,0);
-$dur: 0.25s;
-$blur: 0.02em;
-$contrast: 5;
-$fireRad: 3em;
-$parts: 50;
-$partSize: $astronarHeight/3; // Vertical size of thruster
-$width: $astronarHeight /3 *2; // Horizontal size of thruster
-
-
-.thruster {
-    position: relative;
-    width: $astronarHeight;
-    margin: 0 auto;
-    // left: 50%;
-}
-.fire {
-    position: relative;
-    left: -$astronarHeight / 2;
-    z-index: 2;
-	font-size: 24px;
-	-webkit-filter: blur($blur) contrast($contrast);
-	width: $width;
-	height: $partSize;
-    margin-top: -($astronarHeight + $partSize) / 2;
-}
-.particle {
-	animation: thrust $dur ease-in infinite;
-	background-image: radial-gradient($fireColor 20%,$fireColorT 70%);
-	border-radius: 50%;
-	mix-blend-mode: screen;
-	opacity: 0;
-	position: absolute;
-	bottom: 0;
-	width: $partSize;
-	height: $partSize;
-	// spread particles out in time and x-position to get desired effect
-	@for $p from 1 through $parts {
-		&:nth-of-type(#{$p}) {
-			animation-delay: $dur * random();
-			left: calc((100% - #{$partSize}) * #{($p - 1)/$parts});
-		}
-	}
-}
-@keyframes thrust {
-	from {
-		opacity: 0;
-		transform: translateX(0) scale(1);
-	}
-	50% {
-		opacity: 1;
-        transform: translateX(-50%) scale(.4);
-	}
-	to {
-		opacity: 0;
-		transform: translateX(-100%) scale(0);
-	}
-}
 
 .quotes {
     display: flex;
