@@ -22,15 +22,15 @@ body {
 }
 
 .header, .footer {
+    display: flex;
     background-color: var(--dark-brown);
     color: var(--light-tan);
+    margin: 0;
+    padding: 0;
 }
 
 .header {
-    display: flex;
     justify-content: space-between;
-    margin: 0;
-    padding: 0;
 }
 
 .nav-left {
@@ -66,39 +66,47 @@ body {
     height: 400px;
 }
 
-.space {
-    height: 400px;
-}
-
 .welcome {
+    display: flex;
+    justify-content: space-between;
     background-color: var(--light-brown);
     color: black;
 }
 
-.space {
-    display: flex;
-    background: radial-gradient(ellipse at bottom, #162b43 0%, #000000 100%);
-}
-
-.space img {
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    height: 300px;
+#sophisticat {
+    height: 400px;
     width: auto;
 }
 
-// SPACE BACKGROUND
+// SPACE SECTION
+
+$spaceHeight: 400px;  // Height of Space Section
+$astronarHeight: 300px;  // Height of rocket image
+
+
+.space {  // Container for entire space section
+    height: $spaceHeight;
+    background: radial-gradient(ellipse at bottom, #162b43 0%, #000000 100%);
+    overflow: hidden;
+}
+
+.stars{  // Container for star elements
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 0;
+}
 
 // n is number of stars
 @function multiple-box-shadow($n) {
-    $value: '#{random(4000)}px #{random(400)}px #FFF';
+    $value: '#{random(4000)}px #{random($spaceHeight)}px #FFF';
     @for $i from 2 through $n {
-        $value: '#{$value} , #{random(4000)}px #{random(400)}px #FFF';
+        $value: '#{$value} , #{random(4000)}px #{random($spaceHeight)}px #FFF';
     }
     @return unquote($value);
 } 
   
+// Star Density - Far away (small) stars should have larger number than nearby (large) stars
 $shadows-small:  multiple-box-shadow(2000);
 $shadows-medium: multiple-box-shadow(500);
 $shadows-big:    multiple-box-shadow(150);
@@ -131,7 +139,7 @@ $shadows-big:    multiple-box-shadow(150);
 }
 
 #starsMd::after {
-content: " ";
+    content: " ";
     position: absolute;
     top: 2000px;
     width: 2px;
@@ -161,32 +169,58 @@ content: " ";
     
 @keyframes animStar {
     from {
-        transform: translateX(-1000px);
+        transform: translateX(0);
     }
         
     to {
-        transform: translateX(-3000px);
+        transform: translateX(-2000px);
     }		
 }
 
-// ROCKET THRUST
+// Starship
+
+.starship {
+    height: 100%;
+    width: 100%;
+    margin-top: -$spaceHeight;
+    text-align: center;
+    // overflow: hidden;
+}
+
+.astronar {
+    height: $astronarHeight;
+    width: auto;
+    position: relative;
+    z-index: 3;
+    margin-top: ($spaceHeight - $astronarHeight) / 2;
+}
+
+// Starship Thruster
 
 $fireColor: rgb(255,80,0);
 $fireColorT: rgba(255,80,0,0);
 $dur: 0.25s;
 $blur: 0.02em;
+$contrast: 5;
 $fireRad: 3em;
 $parts: 50;
-$partSize: 5em;
+$partSize: 100px; // Vertical size of thruster
+$width: 200px; // Horizontal size of thruster
 
+
+.thruster {
+    position: relative;
+    left: 50%;
+}
 .fire {
+    position: relative;
+    left: -$astronarHeight;
+    z-index: 2;
 	font-size: 24px;
-	filter: blur($blur);
-	-webkit-filter: blur($blur) contrast(10);
-	margin: 3em auto 0 auto;
-	position: relative;
-	width: 10em;
-	height: 12em;
+	-webkit-filter: blur($blur) contrast($contrast);
+	width: $width;
+	height: $partSize;
+    margin-top: -($astronarHeight + $partSize) / 2;
 }
 .particle {
 	animation: thrust $dur ease-in infinite;
@@ -213,14 +247,18 @@ $partSize: 5em;
 	}
 	50% {
 		opacity: 1;
+        transform: translateX(-50%) scale(.4);
 	}
 	to {
 		opacity: 0;
-		transform: translateX(-10em) scale(0);
+		transform: translateX(-100%) scale(0);
 	}
 }
 
 .quotes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--light-tan);
     color: black;
 }
@@ -231,7 +269,6 @@ $partSize: 5em;
 }
 
 .footer {
-    display: flex;
     justify-content: center;
     align-items: center;
 }
