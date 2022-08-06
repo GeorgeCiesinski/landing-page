@@ -317,10 +317,19 @@ $smallSize: 75px;
 
 .quotes {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     background-color: var(--light-tan);
     color: black;
+}
+
+.quote, .author {
+    margin: 0 200px 0 200px;
+}
+
+.quote {
+    font: italic 36px black;
 }
 
 .call-to-action {
