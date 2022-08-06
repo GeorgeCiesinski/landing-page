@@ -109,20 +109,29 @@ $spaceHeight: 400px;  // Height of Space Section
 $shadows-small:  multiple-box-shadow(2000);
 $shadows-medium: multiple-box-shadow(500);
 $shadows-big:    multiple-box-shadow(150);
+
+// Filter variables
+$starBlur: 0.03em;
+$starBlurSmall: 0.02em;
     
 #starsSm {
     width: 1px;
     height: 1px;
+    filter: blur($starBlurSmall);
+    -webkit-filter: blur($starBlurSmall);
     background: transparent;
     box-shadow: $shadows-small;
     animation: animStar 150s linear infinite;
 }
-#starsSm::after {
+// Fills space right of stars until loop restarts - allows for infinite loops
+#starsSm::after { 
     content: " ";
     position: absolute;
     left: 2000px;
     width: 1px;
     height: 1px;
+    filter: blur($starBlurSmall);
+    -webkit-filter: blur($starBlurSmall);
     background: transparent;
     box-shadow: $shadows-small;
 }
@@ -130,6 +139,8 @@ $shadows-big:    multiple-box-shadow(150);
 #starsMd {
     width: 2px;
     height: 2px;
+    filter: blur($starBlur);
+    -webkit-filter: blur($starBlur);
     background: transparent;
     box-shadow: $shadows-medium;
     animation: animStar 100s linear infinite;
@@ -140,6 +151,8 @@ $shadows-big:    multiple-box-shadow(150);
     left: 2000px;
     width: 2px;
     height: 2px;
+    filter: blur($starBlur);
+    -webkit-filter: blur($starBlur);
     background: transparent;
     box-shadow: $shadows-medium;
 }
@@ -147,6 +160,8 @@ $shadows-big:    multiple-box-shadow(150);
 #starsLg {
     width: 3px;
     height: 3px;
+    filter: blur($starBlur);
+    -webkit-filter: blur($starBlur);
     background: transparent;
     box-shadow: $shadows-big;
     animation: animStar 50s linear infinite;
@@ -157,11 +172,13 @@ $shadows-big:    multiple-box-shadow(150);
     left: 2000px;
     width: 3px;
     height: 3px;
+    filter: blur($starBlur);
+    -webkit-filter: blur($starBlur);
     background: transparent;
     box-shadow: $shadows-big;
 }
 
-    
+// Animate scroll effect
 @keyframes animStar {
     from {
         transform: translateX(0);
@@ -183,6 +200,24 @@ $shadows-big:    multiple-box-shadow(150);
         width: 100%;
         margin-top: -$spaceHeight;
         text-align: center;
+        animation: animShip 10s linear infinite;
+    }
+    @keyframes animShip {
+        from {
+            transform: translateY(0);
+        }
+        25% {
+            transform: translateY(5%);
+        }
+        50% {
+            transform: translateY(0);
+        }
+        75% {
+            transform: translateY(-5%);
+        }
+        to {
+            transform: translateY(0);
+        }
     }
 
     // Starship image
@@ -198,8 +233,8 @@ $shadows-big:    multiple-box-shadow(150);
     $fireColor: rgb(255,80,0);
     $fireColorT: rgba(255,80,0,0);
     $dur: 0.25s;
-    $blur: 0.02em;
-    $contrast: 5;
+    $thrusterBlur: 0.02em;
+    $thrusterContrast: 5;
     $fireRad: 3em;
     $parts: 50;
     $partSize: $astronarHeight/3; // Vertical size of thruster
@@ -214,7 +249,8 @@ $shadows-big:    multiple-box-shadow(150);
         left: -$astronarHeight / 2;
         z-index: 2;
         font-size: 24px;
-        -webkit-filter: blur($blur) contrast($contrast);  // Stylistic look for fire
+        filter: blur($thrusterBlur) contrast($thrusterContrast);
+        -webkit-filter: blur($thrusterBlur) contrast($thrusterContrast);  // Stylistic look for fire
         width: $width;
         height: $partSize;
         margin-top: -($astronarHeight + $partSize) / 2;
