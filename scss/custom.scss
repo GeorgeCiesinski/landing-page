@@ -62,6 +62,7 @@ body {
     text-decoration: none;
 }
 
+// Temporary sizing until these sections are completed
 .welcome, .quotes, .call-to-action {
     height: 400px;
 }
@@ -84,7 +85,7 @@ $spaceHeight: 400px;  // Height of Space Section
 
 .space {  // Container for entire space section
     height: $spaceHeight;
-    background: radial-gradient(ellipse at bottom, #162b43 0%, #000000 100%);
+    background: linear-gradient(#162b43 0%, #000000 100%);
     overflow: hidden;
 }
 
@@ -97,9 +98,9 @@ $spaceHeight: 400px;  // Height of Space Section
 
 // n is number of stars
 @function multiple-box-shadow($n) {
-    $value: '#{random(4000)}px #{random($spaceHeight)}px #FFF';
+    $value: '#{random(2000)}px #{random($spaceHeight)}px #FFF';
     @for $i from 2 through $n {
-        $value: '#{$value} , #{random(4000)}px #{random($spaceHeight)}px #FFF';
+        $value: '#{$value} , #{random(2000)}px #{random($spaceHeight)}px #FFF';
     }
     @return unquote($value);
 } 
@@ -119,7 +120,7 @@ $shadows-big:    multiple-box-shadow(150);
 #starsSm::after {
     content: " ";
     position: absolute;
-    top: 2000px;
+    left: 2000px;
     width: 1px;
     height: 1px;
     background: transparent;
@@ -136,7 +137,7 @@ $shadows-big:    multiple-box-shadow(150);
 #starsMd::after {
     content: " ";
     position: absolute;
-    top: 2000px;
+    left: 2000px;
     width: 2px;
     height: 2px;
     background: transparent;
@@ -153,7 +154,7 @@ $shadows-big:    multiple-box-shadow(150);
 #starsLg::after {
     content: " ";
     position: absolute;
-    top: 2000px;
+    left: 2000px;
     width: 3px;
     height: 3px;
     background: transparent;
@@ -173,16 +174,18 @@ $shadows-big:    multiple-box-shadow(150);
 
 // STARSHIP COMPONENTS
 
-// Called with different screen sizes to determine the size of the ship
+// Called with different astronarHeight depending on screen size
 @mixin starship-size($astronarHeight) {
-    // Starship
+
+    // Starship container
     .starship {
         height: 100%;
         width: 100%;
         margin-top: -$spaceHeight;
         text-align: center;
-        // overflow: hidden;
     }
+
+    // Starship image
     .astronar {
         height: $astronarHeight;
         width: auto;
@@ -205,14 +208,13 @@ $shadows-big:    multiple-box-shadow(150);
         position: relative;
         width: $astronarHeight;
         margin: 0 auto;
-        // left: 50%;
     }
     .fire {
         position: relative;
         left: -$astronarHeight / 2;
         z-index: 2;
         font-size: 24px;
-        -webkit-filter: blur($blur) contrast($contrast);
+        -webkit-filter: blur($blur) contrast($contrast);  // Stylistic look for fire
         width: $width;
         height: $partSize;
         margin-top: -($astronarHeight + $partSize) / 2;
