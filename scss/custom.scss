@@ -33,7 +33,7 @@ body {
     justify-content: space-between;
 }
 
-.nav-left {
+.nav-left, .nav-links {
     display: flex;
     align-items: center;
 }
@@ -42,14 +42,9 @@ body {
     margin: 0px 16px 0px 16px;
 }
 
-.nav-links {
-    display: flex;
-    align-items: center;
-}
-
 .nav-links ul {
     display: flex;
-    padding: 8px 16px 8px 8px;
+    margin: 0 16px 0 8px;
     gap: 16px;
     list-style: none;
 }
@@ -63,20 +58,35 @@ body {
 }
 
 // Temporary sizing until these sections are completed
-.welcome, .quotes, .call-to-action {
+.quotes, .call-to-action {
     height: 400px;
 }
 
 .welcome {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
     background-color: var(--light-brown);
     color: black;
 }
 
-#sophisticat {
+.stats {
+    width: 600px;
+}
+
+.rounded-image {
+    border: 2px solid black;
+    border-radius: 25%;
+    width: 400px;
     height: 400px;
-    width: auto;
+    margin: 20px;
+}
+
+.rounded-image img {
+    border-radius: 25%;
+    height: 100%;
+    width: 100%;
 }
 
 // SPACE BACKGROUND
