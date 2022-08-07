@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/99b64d7ede.js" crossorigin="anonymous"></script> <!-- FONT AWESOME -->
     <script>
+        // Video play button script
         window.onload=function() {
             // Run this script once document is fully loaded
             var playButton = document.getElementById("play-button");
@@ -26,7 +27,6 @@
                 }
             })
         }
-        
     </script>
 </head>
 <body>
@@ -42,8 +42,8 @@
         <div class="nav-links">
             <ul>
                 <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#quotes">Quotes</a></li>
+                <li><a href="#call-to-action">Act Now</a></li>
             </ul>
         </div> 
     </div>
@@ -51,11 +51,7 @@
         <div class="welcome">
             <div class="left">
                 <h1>Meet Nar-Nar</h1>
-                <div class="stats">
-                    <h2>Stats</h2>
-                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                </div>
-                
+                <p>Nar-Nar is a tabby mutt that came from a farm in Nova Scotia. She is now an indoor cat and a Toronto resident.</p>
             </div>
             <div class="right">
                 <div class="rounded-image">
@@ -127,7 +123,7 @@
                 </div>
             </div>
         </div>
-        <div class="quotes">
+        <div id="quotes">
             <p class="quote">
                 "Happiness is like a butterfly; the more you chase it, the more it will elude you, but if you turn your attention to other things such as petting cats, it will come and sit softly on your shoulder. Then you can eat it!"
             </p>
@@ -136,7 +132,7 @@
                 <strong>- Nar-Nar</strong>
             </p>
         </div>   
-        <div class="call-to-action">
+        <div id="call-to-action">
             <h2>The Time to Act is Now</h2>
             <p>Don't hesitate any longer, it's time to pet Nar-Nar.</p>
             <div class="video-player">
