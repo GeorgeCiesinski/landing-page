@@ -6,6 +6,20 @@
     <title>Landing Page</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/99b64d7ede.js" crossorigin="anonymous"></script> <!-- FONT AWESOME -->
+    <script>
+        window.onload=function() {
+            var playButton = document.getElementById("play-button");
+
+            playButton.addEventListener("click", function() {
+                if (video.paused == true) {
+                    video.play();
+                } else {
+                    video.pause();
+                }s
+            })
+        }
+        
+    </script>
 </head>
 <body>
     <div class="header">
@@ -28,8 +42,7 @@
     <div class="content">
         <div class="welcome">
             <div class="left">
-                <h1>Nar-Nar</h1>
-                <p>Meet Nar-Nar the Cat. She is soft and cuddly and extremely needy for love.</p>
+                <h1>Meet Nar-Nar</h1>
                 <div class="stats">
                     <h2>Stats</h2>
                     <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
@@ -116,10 +129,16 @@
             </p>
         </div>   
         <div class="call-to-action">
-            <div class="cta-text">
-                <h2>The Time to Act is Now</h2>
-                <p>Pet Nar-Nar</p>
+            <h2>The Time to Act is Now</h2>
+            <div class="video-player">
+                <video id="video">
+                    <source src="videos/pet-nar-high.mp4" type="video/mp4">
+                    Sorry your browser doesn't support embedded videos.
+                </video>
             </div>
+            <button type="button" id="play-button">
+                <i class="fas fa-2x fa-hand-holding fa-rotate-180"></i>                
+            </button>
         </div>
     </div>
     <div class="footer">
