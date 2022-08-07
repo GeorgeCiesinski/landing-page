@@ -8,14 +8,22 @@
     <script src="https://kit.fontawesome.com/99b64d7ede.js" crossorigin="anonymous"></script> <!-- FONT AWESOME -->
     <script>
         window.onload=function() {
+            // Run this script once document is fully loaded
             var playButton = document.getElementById("play-button");
 
+            // Event listener for pause/play button
             playButton.addEventListener("click", function() {
                 if (video.paused == true) {
+                    // If the video is paused play it
                     video.play();
+                    // Change inner html to pause icon
+                    playButton.innerHTML = "<i class='fas fa-2x fa-hand'></i>";
                 } else {
+                    // If the video is playing pause it
                     video.pause();
-                }s
+                    // Change inner html to pet icon
+                    playButton.innerHTML = "<i class='fas fa-2x fa-hand-holding fa-rotate-180'></i>";
+                }
             })
         }
         
@@ -130,6 +138,7 @@
         </div>   
         <div class="call-to-action">
             <h2>The Time to Act is Now</h2>
+            <p>Don't hesitate any longer, it's time to pet Nar-Nar.</p>
             <div class="video-player">
                 <video id="video">
                     <source src="videos/pet-nar-high.mp4" type="video/mp4">
@@ -144,7 +153,7 @@
     <div class="footer">
         <div class="footer-text">
             <p>Webpage by George Ciesinski</p>
-            <p>&copy; 2022 Landing Page</p>
+            <p>&copy; 2022 Nar-Nar Landing Page</p>
         </div>
     </div>
 </body>
