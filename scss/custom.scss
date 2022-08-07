@@ -1,5 +1,3 @@
-// @import "compass/css3";
-
 :root {
     --dark-brown: #2D231E;
     --light-brown: #806D5C;
@@ -90,15 +88,18 @@ body {
 
 // SPACE BACKGROUND
 
-$spaceHeight: 400px;  // Height of Space Section
+// Height of Space Section
+$spaceHeight: 400px;  
 
-.space {  // Container for entire space section
+// Container for entire space section
+.space {  
     height: $spaceHeight;
     background: linear-gradient(#162b43 0%, #000000 100%);
     overflow: hidden;
 }
 
-.stars{  // Container for star elements
+// Container for star elements
+.stars{  
     height: 100%;
     width: 100%;
     position: relative;
@@ -126,13 +127,13 @@ $starBlurSmall: 0.02em;
 #starsSm {
     width: 1px;
     height: 1px;
-    filter: blur($starBlurSmall);
+    filter: blur($starBlurSmall);  // Browser compatibility
     -webkit-filter: blur($starBlurSmall);
     background: transparent;
     box-shadow: $shadows-small;
     animation: animStar 150s linear infinite;
 }
-// Fills space right of stars until loop restarts - allows for infinite loops
+// After fills space right of stars until next box-shadow is initialized to give illusion of infinite loop
 #starsSm::after { 
     content: " ";
     position: absolute;
@@ -194,7 +195,7 @@ $starBlurSmall: 0.02em;
     }
         
     to {
-        transform: translateX(-2000px);
+        transform: translateX(-2000px);  // Travels left the width of box-shadow
     }		
 }
 
@@ -346,7 +347,7 @@ $smallSize: 75px;
 }
 
 .video-player {
-    max-width: 600px;
+    max-width: 70%;
     height: auto;
 }
 
