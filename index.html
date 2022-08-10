@@ -22,6 +22,7 @@
                 } else {
                     // If the video is playing pause it
                     video.pause();
+                    video.currentTime = 0;
                     // Change inner html to pet icon
                     playButton.innerHTML = "<i class='fas fa-2x fa-hand-holding fa-rotate-180'></i>";
                 }
@@ -42,6 +43,7 @@
         <div class="nav-links">
             <ul>
                 <li><a href="#">Home</a></li>
+                <li><a href="#info">Status</a></li>
                 <li><a href="#quotes">Quotes</a></li>
                 <li><a href="#call-to-action">Act Now</a></li>
             </ul>
@@ -50,8 +52,11 @@
     <div class="content">
         <div class="welcome">
             <div class="left">
-                <h1>Meet Nar-Nar</h1>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <h1>Life of Nar-Nar</h1>
+                <p>Nar-nar was born on a farm in Halifax in 2009. A few weeks later she met her first servant who she lived with in Halifax for several years.</p>
+                <p>In 2012 she moved and became a Toronto resident where she lived as an indoor cat. During this time, she moved frequently and lived in over 7 different homes. This is when she met her second servant.</p>
+                <p>Throughout her life, she has been considered adorable to her detriment, as this rallied flocks of amateur photographers during house parties who would surround her and take photos. She often had no choice but to shed blood.</p>
+                <p>She is currently living a life fit for royalty as her two servants cater to her every need.</p>
             </div>
             <div class="right">
                 <div class="rounded-image">
@@ -59,7 +64,42 @@
                 </div>
             </div>            
         </div>
-        <div class="space">
+        <div id="status">
+            <h1>Status</h1>
+            <div class="info-items">
+                <div class="info-item">
+                    <h1>Stats</h1>
+                    <ul>
+                        <li>HP: 200</li>
+                        <li>Stamina: Low</li>
+                        <li>Agility: High</li>
+                        <li>Size: Runt</li>
+                        <li>Race: Prefer not to answer</li>
+                    </ul>
+                </div>
+                <div class="info-item">
+                    <h1>Conditions</h1>
+                    <ul>
+                        <li>Hyperthyroidism</li>
+                        <li>Itchy left ear</li>
+                        <li> </li>
+                        <li> </li>
+                        <li> </li>
+                    </ul>
+                </div>
+                <div class="info-item">
+                    <h1>Moves</h1>
+                    <ul>
+                        <li>Bite</li>
+                        <li>Slash</li>
+                        <li>Side lay defense stance</li>
+                        <li>Night Vision</li>
+                        <li>Ambush</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="space">
             <div class="stars">
                 <div id="starsSm"></div>
                 <div id="starsMd"></div>
@@ -125,7 +165,7 @@
         </div>
         <div id="quotes">
             <p class="quote">
-                "Happiness is like a butterfly; the more you chase it, the more it will elude you, but if you turn your attention to other things such as petting cats, it will come and sit softly on your shoulder. Then you can eat it!"
+                "Happiness is like a butterfly; the more you chase it, the more it will elude you, but if you turn your attention to other things (like petting me), it will come and sit softly on your shoulder. Then you can eat it!"
             </p>
             <br>
             <p class="author">
@@ -133,8 +173,8 @@
             </p>
         </div>   
         <div id="call-to-action">
-            <h2>The Time to Act is Now</h2>
-            <p>Don't hesitate any longer, it's time to pet Nar-Nar.</p>
+            <h1>The Time to Act is Now</h1>
+            <h4>Don't hesitate any longer, it's time to pet Nar-Nar.</h4>
             <div class="video-player">
                 <video id="video">
                     <source src="videos/pet-nar-high.mp4" type="video/mp4">
