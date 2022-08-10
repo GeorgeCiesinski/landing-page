@@ -18,17 +18,13 @@ body {
     margin: 0;
 }
 
-.content {
-    display: flex;
-    flex-direction: column;
-}
-
 .header, .footer {
     display: flex;
     background-color: var(--dark-brown);
     color: var(--light-tan);
+    width: 80vw;
+    padding: 0 10vw 0 10vw;
     margin: 0;
-    padding: 0;
 }
 
 .header {
@@ -41,14 +37,14 @@ body {
 }
 
 .nav-icon {
-    margin: 0px 16px 0px 16px;
+    margin-right: 1vw;
 }
 
 .nav-links ul {
     display: flex;
-    margin: 0 16px 0 8px;
     gap: 16px;
     list-style: none;
+    padding: 0;
 }
 
 .nav-links ul li a {
@@ -59,30 +55,36 @@ body {
     text-decoration: none;
 }
 
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.welcome, #quotes, #call-to-action {
+    width: 80vw;
+    padding: 0 10vw 0 10vw;
+}
+
 .welcome {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    gap: 2vw;
     background-color: var(--light-brown);
     color: var(--light-tan);
+    padding-block: 2vw;
 }
 
-.left .right {
+.left, .right {
     flex: 1;
-}
-
-.stats {
-    width: 400px;
+    min-width: 285px;
 }
 
 .rounded-image {
-    width: 400px;
-    height: 400px;
-    margin: 20px;
+    width: 100%;
 }
 
 .rounded-image img {
+    vertical-align: top;  // Fixes descender element in fonts causing 3.5px margin
     border: 2px solid var(--dark-brown);
     border-radius: 10%;
     height: 100%;
@@ -97,6 +99,7 @@ $spaceHeight: 400px;
 // Container for entire space section
 .space {  
     height: $spaceHeight;
+    width: 100vw;
     background: linear-gradient(#162b43 0%, #000000 100%);
     overflow: hidden;
 }
@@ -325,11 +328,6 @@ $smallSize: 75px;
     align-items: flex-end;
     background-color: var(--light-tan);
     color: black;
-    padding: 40px 0 40px 0;
-}
-
-.quote, .author {
-    margin: 0 200px 0 200px;
 }
 
 .quote {
@@ -344,13 +342,8 @@ $smallSize: 75px;
     color: black;
 }
 
-#call-to-action p {
-    margin: 0 0 20px 0;
-    padding: 0;
-}
-
 .video-player {
-    max-width: 70%;
+    max-width: 80vw;
     height: auto;
 }
 
